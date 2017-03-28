@@ -9,11 +9,28 @@ function InputName(props) {
 }
 
 function Modal(props) {
+	function addActive(e) {
+		e.target.classList.add("active");
+	}
+	
+	function removeActive(e) {
+		e.target.classList.remove("active");
+	}
+	
 	return(
 		<div className="modal active">
-			<div className="modal-content">
+			<div className="modal-content active">
 				<p className="message-title">Hello {props.name}!</p>
-				<p className="center mt32"><button className="btn" onClick={props.doToggle}>Close</button></p>
+				<p className="center mt32">
+					<button
+					className="btn"
+					onClick={props.doToggle}
+					onMouseDown={addActive}
+					onMouseUp={removeActive}
+					onTouchStart={addActive}
+					onTouchEnd={removeActive}
+					>Close</button>
+				</p>
 			</div>
 		</div>
 	);
